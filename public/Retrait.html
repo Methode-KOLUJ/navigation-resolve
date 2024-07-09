@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retrait</title>
+    <style>
+      :root {
+        --bg-color: #1f242d;
+        --second-bg-color: #323946;
+        --text-color: #fff;
+        --main-color: #0ef;
+      }
+      body {
+        font-family: "Times New Roman", Times, serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--second-bg-color)
+      }
+      .container {
+        width: 85%;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        page-break-inside: avoid;
+      }
+
+      .header,
+      .footer {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .header h1 {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 60px;
+      }
+      .footer p {
+        font-size: 18px;
+        margin-top: 20px;
+        font-style: italic;
+        font-weight: bold;
+      }
+      .content {
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        padding-top: 40px;
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+        margin-left: 15%;
+        margin-right: 15%;
+      }
+      .content p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+      .content p strong {
+        font-size: 1.4rem;
+        font-weight: bold;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      .identity {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: royalblue;
+        margin-left: 0.3em;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      a {
+        text-decoration: none;
+      }
+      .Retour {
+        background: #000;
+        color: wheat;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 10px;
+        user-select: none;
+        margin-left: 45%;
+      }
+      @page {
+        size: A4;
+        margin: 20mm;
+      }
+      @media print {
+        body {
+          background-color: #fff;
+        }
+        .container {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+          border: none;
+          page-break-inside: avoid;
+          margin-top: 10%;
+        }
+        .header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          margin: 0;
+        }
+        .footer {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          margin: 0;
+        }
+        .content {
+          margin-top: 100px;
+          margin-bottom: 100px;
+          padding-top: 60px;
+          padding-bottom: 20px;
+          page-break-inside: avoid;
+        }
+        .content p {
+          font-size: 20px;
+        }
+        .Retour {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>FORMULAIRE DE RETRAIT</h1>
+      </div>
+      <div class="content">
+        <p>
+          <strong>Client name:</strong>
+          <span id="client_name" class="identity"></span>
+        </p>
+        <p>
+          <strong>Vessels_name:</strong>
+          <span id="vessels_name" class="identity"></span>
+        </p>
+        <p>
+          <strong>Port_loading:</strong>
+          <span id="port_loading" class="identity"></span>
+        </p>
+        <p>
+          <strong>Port_discharge:</strong>
+          <span id="port_discharge" class="identity"></span>
+        </p>
+        <p>
+          <strong>ETD:</strong>
+          <span id="date_exp" class="identity"></span>
+        </p>
+        <p>
+          <strong>ETA:</strong>
+          <span id="eta" class="identity"></span>
+        </p>
+        <p>
+          <strong>Billot loading number :</strong>
+          <span id="num_suivi" class="identity"></span>
+        </p>
+        <p>
+          <strong>Container number :</strong>
+          <span id="containers_no" class="identity"></span>
+        </p>
+      </div>
+      <div class="footer">
+        <p>Merci d'avoir choisi notre agence, à très bientôt !</p>
+      </div>
+      <a href="./Transaction.html" class="Retour">OK</a>
+    </div>
+    <script>
+      // Script pour remplir les données dynamiquement
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById("client_name").textContent =
+          urlParams.get("client_name");
+        document.getElementById("vessels_name").textContent =
+          urlParams.get("vessels_name");
+        document.getElementById("port_loading").textContent =
+          urlParams.get("port_loading");
+        document.getElementById("port_discharge").textContent =
+          urlParams.get("port_discharge");
+        document.getElementById("date_exp").textContent =
+          urlParams.get("date_exp");
+        document.getElementById("eta").textContent = urlParams.get("eta");
+        document.getElementById("num_suivi").textContent =
+          urlParams.get("num_suivi");
+        document.getElementById("containers_no").textContent =
+          urlParams.get("containers_no");
+      });
+    </script>
+  </body>
+</html>
